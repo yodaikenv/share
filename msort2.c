@@ -180,7 +180,6 @@ int main(int argc, char **argv)
 {
 	sort_t *x;
 	sort_t *scratch;
-	sort_t *dummy;
 	int y = 128;		//default array length.
 
 	if (argc > 1 && isdigit(argv[1][0])) {
@@ -192,7 +191,6 @@ int main(int argc, char **argv)
 	}
 
 	x = malloc(sizeof(sort_t) * y);
-//	dummy = malloc(sizeof(sort_t) * 10);
 	scratch = malloc(sizeof(sort_t) * y);
 	if (!x || !scratch) {
 		fprintf(stderr, "Cannot allocate the array\n");

@@ -34,41 +34,6 @@ void initarray (sort_t * x, unsigned int n);
 
 int debug = 0;
 
-int
-main (int argc, char **argv)
-{
-  sort_t *x;
-  int y = 128;			//default array length.
-
-  if (argc > 1 && isdigit (argv[1][0]))
-    {
-      y = atoi (argv[1]);
-      if (!y)
-	{
-	  fprintf (stderr, "cant test a 0 element array\n");
-	  exit (0);
-	}
-    }
-
-  x = malloc (sizeof (sort_t) * (2 * y) + 1);
-  if (!x)
-    {
-      fprintf (stderr, "Cannot allocate the array\n");
-      exit (0);
-    }
-
-  initarray (x, y);		//fill it with random numbers
-
-  if (debug)
-    printf ("Before sorting testsort returns %d\n", testsort (x, y));
-
-  msort (x, y);
-
-  printf ("After sorting %d elements testsort returns %d\n", y,
-	  testsort (x, y));
-
-}
-
 void
 msort (sort_t * R, unsigned int N)
 {
@@ -224,3 +189,38 @@ initarray (sort_t * x, unsigned int n)
   for (i = 0; i <= n; i++)
     x[i] = (sort_t) random ();
 }
+int
+main (int argc, char **argv)
+{
+  sort_t *x;
+  int y = 128;			//default array length.
+
+  if (argc > 1 && isdigit (argv[1][0]))
+    {
+      y = atoi (argv[1]);
+      if (!y)
+	{
+	  fprintf (stderr, "cant test a 0 element array\n");
+	  exit (0);
+	}
+    }
+
+  x = malloc (sizeof (sort_t) * (2 * y) + 1);
+  if (!x)
+    {
+      fprintf (stderr, "Cannot allocate the array\n");
+      exit (0);
+    }
+
+  initarray (x, y);		//fill it with random numbers
+
+  if (debug)
+    printf ("Before sorting testsort returns %d\n", testsort (x, y));
+
+  msort (x, y);
+
+  printf ("After sorting %d elements testsort returns %d\n", y,
+	  testsort (x, y));
+
+}
+
